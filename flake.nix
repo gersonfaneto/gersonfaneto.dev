@@ -25,6 +25,7 @@
             yarn
 
             nodePackages.vscode-langservers-extracted
+            nodePackages.live-server
           ];
         };
       });
