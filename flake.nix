@@ -26,6 +26,11 @@
 
             nodePackages.vscode-langservers-extracted
             nodePackages.live-server
+
+            prettierd
+            efm-langserver
+
+            typescript-language-server
           ];
         };
       });
