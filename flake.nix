@@ -1,5 +1,7 @@
+# Based on :: https://github.com/the-nix-way/dev-templates
+
 {
-  description = "A Nix-flake-based Node.js development environment";
+  description = "gersonfaneto.dev by @gersonfaneto";
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
 
@@ -19,19 +21,23 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [
+            # NodeJS
             node2nix
             nodejs
             nodePackages.pnpm
             yarn
 
-            nodePackages.vscode-langservers-extracted
-            nodePackages.live-server
-
-            prettierd
-            efm-langserver
-
+            # LSP
             typescript-language-server
-          ];
+
+            # Others
+            efm-langserver
+          ] ++
+            (with pkgs.nodePackages; [
+              vscode-langservers-extracted
+              live-server
+              prettier
+            ]);
         };
       });
     };
